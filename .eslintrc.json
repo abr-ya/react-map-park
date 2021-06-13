@@ -1,0 +1,48 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "airbnb"
+        // "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        // "prettier",
+        "import"
+    ],
+    "settings": {
+        "import/extensions": [".js", ".jsx", ".ts", ".tsx"]
+    },
+    "rules": {
+        // note you must disable the base rule as it can report incorrect errors
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        // "prettier/prettier": ["error"],
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "import/no-unresolved": "off",
+		"object-curly-spacing": "off",
+        "import/extensions": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars-experimental": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+            "off", // error
+            { "allowTypedFunctionExpressions": false } // true
+        ]
+        //"react/destructuring-assignment": ["always", { "ignoreClassFields": true }]
+    }
+}
