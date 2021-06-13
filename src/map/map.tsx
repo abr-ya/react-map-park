@@ -68,12 +68,14 @@ class MapComponent extends React.PureComponent<TMapProps, TMapState> {
 
   render() {
     return (
-      <div className="map" ref={this.mapDivRef}>
-        {this.state.mapContext && (
-          <MapContext.Provider value={this.state.mapContext}>
-            <VectorLayer />
-          </MapContext.Provider>
-        )}
+      <div className="container-fluid">
+        <div className="map" ref={this.mapDivRef}>
+          {this.state.mapContext && (
+            <MapContext.Provider value={this.state.mapContext}>
+              <VectorLayer />
+            </MapContext.Provider>
+          )}
+        </div>
       </div>
     );
   }
