@@ -2,11 +2,13 @@
 import React from 'react';
 import Map from 'ol/Map';
 import View from 'ol/View';
+import Overlay from 'ol/Overlay';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import { transform } from 'ol/proj';
 import VectorLayer from './layers/vector/vector';
 import { TMapProps, IMapContext, TMapState } from './map-types';
+import Popup from '../components/Popup/Popup';
 import 'ol/ol.css';
 import './map.css';
 
@@ -41,14 +43,43 @@ class MapComponent extends React.PureComponent<TMapProps, TMapState> {
       }),
     });
 
+    /* Popup */
+    const container = document.getElementById('popup') as HTMLElement;
+    const content_element = document.getElementById('popup-content') as HTMLElement;
+    const closer = document.getElementById('popup-closer') as HTMLElement;
+
+    const overlay = new Overlay({
+      element: container,
+      autoPan: true,
+      offset: [0, -10],
+    });
+
+    closer.onclick = () => {
+      overlay.setPosition(undefined);
+      closer.blur();
+    };
+
+    map.addOverlay(overlay);
+    /* /Popup */
+
     // common switch function
     const itemClickHandler = (feature: any, el?: any) => {
-      console.log(feature.values_.geometry.flatCoordinates);
+      const coord = feature.values_.geometry.flatCoordinates;
+      const friendlyCoord = transform(coord, 'EPSG:3857', 'EPSG:4326');
+      const {name} = feature.values_;
+      console.log('click', name, coord);
 
       map.getView().animate(
-        {center: feature.values_.geometry.flatCoordinates},
+        {center: coord},
         {zoom: 17},
       );
+
+      const popupContent = `
+        <h3>${name}</h3>
+        <p>${friendlyCoord.map((co: number) => co.toFixed(4)).join('; ')}</p>
+      `;
+      content_element.innerHTML = popupContent;
+      overlay.setPosition(coord);
     };
 
     // dot clicks
@@ -76,6 +107,7 @@ class MapComponent extends React.PureComponent<TMapProps, TMapState> {
             </MapContext.Provider>
           )}
         </div>
+        <Popup />
       </div>
     );
   }

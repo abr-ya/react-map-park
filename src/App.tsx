@@ -5,7 +5,7 @@ import {
 import Nav from './components/Nav/Nav';
 import Map from './map/map';
 import About from './pages/About';
-import Contact from './pages/Contact';
+import Main from './pages/Main';
 
 export interface ILink {
   link: string;
@@ -15,9 +15,9 @@ export interface ILink {
 
 const App = () => {
   const links: ILink[] = [
-    { link: '/', name: 'Карта', exact: true },
+    { link: '/', name: 'Главная', exact: true },
+    { link: '/map', name: 'Карта', exact: true },
     { link: '/about', name: 'О приложении', exact: true },
-    { link: '/contact', name: 'Контакты', exact: true },
   ];
 
   return (
@@ -28,9 +28,9 @@ const App = () => {
         </div>
       </div>
       <Switch>
-        <Route path="/" component={Map} exact />
+        <Route path="/" component={Main} exact />
+        <Route path="/map" component={Map} />
         <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
