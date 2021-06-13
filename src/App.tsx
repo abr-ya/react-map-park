@@ -1,6 +1,6 @@
 import React from 'react';
-import MapComponent from './map';
+import Map from './map/map';
 
-const App = () => <MapComponent />;
+const App = () => <Map />;
 
 export default App;

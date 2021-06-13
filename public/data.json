@@ -1,0 +1,75 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Манеж"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.70927834510803,
+          47.2410601846119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Памятник"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.71029758453369,
+          47.2392610132039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Общежитие"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.71264719963073,
+          47.23937027636793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Бассейн"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.710952043533325,
+          47.23878753688931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Библиотека"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.71216440200805,
+          47.23853987067012
+        ]
+      }
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import Map from 'ol/Map';
 import View from 'ol/View';
@@ -11,7 +12,7 @@ import './map.css';
 
 export const MapContext = React.createContext<IMapContext | void>(undefined);
 
-export class MapComponent extends React.PureComponent<TMapProps, TMapState> {
+class MapComponent extends React.PureComponent<TMapProps, TMapState> {
   private mapDivRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: TMapProps) {
@@ -40,9 +41,22 @@ export class MapComponent extends React.PureComponent<TMapProps, TMapState> {
       }),
     });
 
+    // common switch function
+    const itemClickHandler = (feature: any, el?: any) => {
+      console.log(feature.values_.geometry.flatCoordinates);
+
+      map.getView().animate(
+        {center: feature.values_.geometry.flatCoordinates},
+        {zoom: 17},
+      );
+    };
+
+    // dot clicks
     map.addEventListener('click', (e: any) => {
-      map.forEachFeatureAtPixel(e.pixel, (feature) => {
-        console.log(feature);
+      map.forEachFeatureAtPixel(e.pixel, (feature, layer) => {
+        console.log(feature, layer);
+        // const navEl = nav.children.namedItem(feature.values_.city);
+        itemClickHandler(feature);
       });
     });
 
