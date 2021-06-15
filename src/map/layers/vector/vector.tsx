@@ -12,7 +12,7 @@ import GeoJSON from 'ol/format/GeoJSON';
 import { MapContext } from '../../map';
 import { IMapContext } from '../../map-types';
 import { TVectorLayerProps, TVectorLayerComponentProps } from './vector-types';
-import data from '../../../data.json';
+// import data from '../../../data.json';
 
 const getStyle = (color: string) => (
   new Style({
@@ -32,23 +32,15 @@ class VectorLayerComponent extends React.PureComponent<TVectorLayerComponentProp
   source: VectorSource;
 
   componentDidMount() {
-    console.log(data);
-
     const style1 = getStyle('blue');
-
-    // eslint-disable-next-line no-unused-expressions
     this.source = new VectorSource({
       format: new GeoJSON(),
       url: '/data.json',
     });
-
-    console.log(this.source);
-
     this.layer = new VectorLayer({
       source: this.source,
       style: style1,
     });
-
     this.props.map.addLayer(this.layer);
     // this.props.map.on('singleclick', this.onMapClick); // новый маркер
   }
@@ -68,7 +60,6 @@ class VectorLayerComponent extends React.PureComponent<TVectorLayerComponentProp
   */
 
   onMapClick = (event: MapBrowserEvent) => {
-    console.log(event.coordinate);
     const featureToAdd = new Feature({
       geometry: new Point(event.coordinate),
     });
@@ -92,12 +83,11 @@ class VectorLayerComponent extends React.PureComponent<TVectorLayerComponentProp
 }
 
 const VectorLayerWithContext = (props: TVectorLayerProps) => {
-  console.log(props);
+  console.log('vectorLayerProps', props);
   return (
     <MapContext.Consumer>
       {(mapContext: IMapContext | void) => {
         if (mapContext) {
-          console.log(mapContext);
           return <VectorLayerComponent {...props} map={mapContext.map} />;
         }
       }}

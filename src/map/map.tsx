@@ -66,8 +66,8 @@ class MapComponent extends React.PureComponent<TMapProps, TMapState> {
     const itemClickHandler = (feature: any, el?: any) => {
       const coord = feature.values_.geometry.flatCoordinates;
       const friendlyCoord = transform(coord, 'EPSG:3857', 'EPSG:4326');
-      const {name} = feature.values_;
-      console.log('click', name, coord);
+      const {name, desc} = feature.values_;
+      console.log('click', name, coord, desc);
 
       map.getView().animate(
         {center: coord},
@@ -76,6 +76,7 @@ class MapComponent extends React.PureComponent<TMapProps, TMapState> {
 
       const popupContent = `
         <h3>${name}</h3>
+        <p>${desc}</p>
         <p>${friendlyCoord.map((co: number) => co.toFixed(4)).join('; ')}</p>
       `;
       content_element.innerHTML = popupContent;

@@ -5,7 +5,8 @@
       "type": "Feature",
       "properties": {
         "id": 1,
-        "name": "Манеж"
+        "name": "Манеж",
+        "desc": "чтобы бегать"
       },
       "geometry": {
         "type": "Point",
@@ -19,7 +20,8 @@
       "type": "Feature",
       "properties": {
         "id": 2,
-        "name": "Памятник"
+        "name": "Памятник",
+        "desc": "студентам и сотрудникам..."
       },
       "geometry": {
         "type": "Point",
@@ -33,7 +35,8 @@
       "type": "Feature",
       "properties": {
         "id": 3,
-        "name": "Общежитие"
+        "name": "Общежитие",
+        "desc": "здесь весело)"
       },
       "geometry": {
         "type": "Point",
@@ -47,7 +50,8 @@
       "type": "Feature",
       "properties": {
         "id": 4,
-        "name": "Бассейн"
+        "name": "Бассейн",
+        "desc": ""
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +65,8 @@
       "type": "Feature",
       "properties": {
         "id": 5,
-        "name": "Библиотека"
+        "name": "Библиотека",
+        "desc": "здесь тихо"
       },
       "geometry": {
         "type": "Point",
